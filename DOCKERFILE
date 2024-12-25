@@ -1,0 +1,19 @@
+# Base image olarak Python 3.8 slim kullanıyoruz
+FROM python:3.8-slim
+
+# Çalışma dizinini ayarlıyoruz
+WORKDIR /app
+
+# Gerekli Python bağımlılıklarını Docker imajına ekliyoruz
+RUN pip install --no-cache-dir \
+    mlflow==2.0.0 \
+    pandas==1.5.3 \
+    scikit-learn==1.1.3 \
+    sentence-transformers==2.2.2 \
+    torch==1.12.1
+
+# Uygulama dosyalarını konteyner içine kopyalıyoruz
+COPY . .
+
+# Çalıştırma komutu, ana Python dosyasını başlatıyoruz
+CMD ["python", "app.py"]

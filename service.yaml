@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mlops-service
+spec:
+  selector:
+    app: mlops
+  ports:
+    - protocol: TCP
+      port: 80       # Dış dünya için açılan port
+      targetPort: 80 # Konteyner içindeki port
+  type: LoadBalancer  # Dışarıya açılacaksa LoadBalancer kullanabilirsiniz

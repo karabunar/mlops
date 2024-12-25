@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mlops-app
+  labels:
+    app: mlops
+spec:
+  replicas: 2  # Kaç kopya çalıştırılacağını belirler
+  selector:
+    matchLabels:
+      app: mlops
+  template:
+    metadata:
+      labels:
+        app: mlops
+    spec:
+      containers:
+        - name: mlops-container
+          image: your_docker_image:latest  # Docker imajınızın adı
+          ports:
+            - containerPort: 80  # Uygulamanızın dinlediği port
+          env:
+            - name: ENV_VAR_NAME
+              value: "your_value"  # Gerekli çevre değişkenleri
