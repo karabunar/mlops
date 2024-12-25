@@ -5,7 +5,7 @@ metadata:
   labels:
     app: mlops
 spec:
-  replicas: 2  # Kaç kopya çalıştırılacağını belirler
+  replicas: 2
   selector:
     matchLabels:
       app: mlops
@@ -16,9 +16,8 @@ spec:
     spec:
       containers:
         - name: mlops-container
-          image: your_docker_image:latest  # Docker imajınızın adı
+          image: mlops:latest
           ports:
-            - containerPort: 80  # Uygulamanızın dinlediği port
+            - containerPort: 80 
           env:
             - name: ENV_VAR_NAME
-              value: "your_value"  # Gerekli çevre değişkenleri
